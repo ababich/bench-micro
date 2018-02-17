@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "~> 2.4"
+ruby "2.5.0"
 
 # webservers
 gem "puma"
@@ -24,7 +24,7 @@ gem "syro"
 gem "watts"
 
 gem "actionpack"
-gem "railties"
+gem "railties", "~> 5.2.0.rc1"
 
 # debugging
 gem "allocation_stats"

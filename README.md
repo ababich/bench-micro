@@ -74,25 +74,25 @@ Yup, I do:
 ```
 Framework            Requests/sec  % from best
 ----------------------------------------------
-rack                     15839.64      100.00%
-watts                    13585.65       85.77%
-syro                     13306.01       84.00%
-roda                     11776.27       74.35%
-cuba                     11501.96       72.62%
-rack-response            11480.11       72.48%
-hobbit                   11140.22       70.33%
-hobby                    10606.80       66.96%
-hanami-router            10247.61       64.70%
-newark                    8896.35       56.17%
-rambutan                  8466.83       53.45%
-plezi                     8240.07       52.02%
-rackstep                  8187.32       51.69%
-rack-app                  7473.52       47.18%
-rails-metal               6598.65       41.66%
-flame                     5454.46       34.44%
-sinatra                   3977.30       25.11%
-grape                     2937.03       18.54%
-rails-api                 1211.33        7.65%
+rack                      3912.20      100.00%
+syro                      3626.70       92.70%
+watts                     3560.82       91.02%
+cuba                      3509.21       89.70%
+rack-response             3351.42       85.67%
+rambutan                  3285.18       83.97%
+roda                      3203.41       81.88%
+hanami-router             3115.99       79.65%
+hobbit                    3080.47       78.74%
+hobby                     3022.36       77.25%
+rack-app                  2950.24       75.41%
+newark                    2930.81       74.91%
+plezi                     2822.49       72.15%
+rackstep                  2748.13       70.25%
+rails-metal               2202.20       56.29%
+sinatra                   2157.43       55.15%
+grape                     1813.13       46.35%
+flame                     1787.63       45.69%
+rails-api                  616.35       15.75%
 ```
 <!-- speed_table_end -->
 
@@ -101,25 +101,25 @@ rails-api                 1211.33        7.65%
 ```
 Framework       Allocs/Req Memsize/Req
 --------------------------------------
-rack                    41        2920
-roda                    45        3608
-syro                    45        3608
-cuba                    47        3688
-watts                   48        3200
-hobbit                  49        3928
-hobby                   53        4240
-rack-response           56        4136
-rails-metal             60        5728
-plezi                   66        5040
-hanami-router           68        4880
-newark                  72        5928
-rackstep                81        4944
-rack-app                83        7184
-rambutan                83        5944
-flame                  125        8536
-sinatra                191       12512
-grape                  272       20800
-rails-api              385       28017
+rack                    40        2880
+roda                    43        3488
+syro                    44        3568
+cuba                    45        3568
+watts                   47        3160
+hobbit                  48        3888
+hobby                   52        4232
+rack-response           55        4096
+rails-metal             62        5848
+plezi                   65        5000
+hanami-router           66        4800
+newark                  71        5888
+rackstep                79        4864
+rambutan                81        5864
+rack-app                82        7336
+flame                  123        8456
+sinatra                188       12160
+grape                  253       20008
+rails-api              370       27050
 ```
 <!-- mem_table_end -->
 
