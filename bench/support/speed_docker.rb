@@ -36,7 +36,6 @@ class SpeedDocker
 
   def stop_puma(server_pid)
     `docker stop bench-micro`
-    `docker rm bench-micro`
     # Process.kill("TERM", server_pid)
 
     # # wait before stop
@@ -48,7 +47,7 @@ class SpeedDocker
   end
 
   def start_command
-    "docker run --name bench-micro -d --net=host bench-micro puma --environment production --threads 16:16 #{config}"
+    "docker run --rm --name bench-micro -d --net=host bench-micro puma --environment production --threads 16:16 #{config}"
   end
 
   def wrk_command
