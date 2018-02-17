@@ -1,4 +1,4 @@
-class SpeedBenchmarker
+class SpeedDocker
   attr_reader :config
 
   def initialize(config)
@@ -25,19 +25,22 @@ class SpeedBenchmarker
   end
 
   def start_puma
-    pid = Process.spawn(start_command, err: :out, out: IO::NULL)
+    `docker run --name bench-micro -d -p9292:9292 bench-micro puma --environment production --threads 16:16 #{config}`
+    # pid = Process.spawn(start_command, err: :out, out: IO::NULL)
 
-    # wait for process to load
-    sleep 3
+    # # wait for process to load
+    # sleep 3
 
-    pid
+    # pid
   end
 
   def stop_puma(server_pid)
-    Process.kill("TERM", server_pid)
+    `docker stop bench-micro`
+    `docker rm bench-micro`
+    # Process.kill("TERM", server_pid)
 
-    # wait before stop
-    Process.wait(server_pid)
+    # # wait before stop
+    # Process.wait(server_pid)
   end
 
   def start_wrk
@@ -45,7 +48,7 @@ class SpeedBenchmarker
   end
 
   def start_command
-    "puma --environment production --threads 16:16 #{config}"
+    "docker run --name bench-micro -d --net=host bench-micro puma --environment production --threads 16:16 #{config}"
   end
 
   def wrk_command

@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+
+require_relative "support/speed_docker"
+require_relative "support/speed_summary_table"
+
+def redirect_stream(stream, path)
+  old_stream = stream.dup
+  stream.reopen(path)
+  stream.sync = true
+  yield
+ensure
+  stream.reopen(old_stream)
+end
+
+apps = Dir["apps/*.ru"].sort
+apps = apps.grep(%r(#{ARGV[0]})) if ARGV[0]
+warn "please wait... the output will come, when finished"
+redirect_stream(STDOUT, 'test.log') do
+  apps.each do |config_file|
+    warn config_file
+    SpeedDocker.new(config_file).run
+  end
+end
+
+content = %x(egrep '\\*|Request' test.log)
+
+summary_table = SpeedSummaryTable.new(content)
+File.open('results/speed.md', 'w') do |f|
+  f.puts summary_table.render_markdown
+end
+puts summary_table.render
+summary_table.replace_readme('speed_table')
